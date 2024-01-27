@@ -1,0 +1,9 @@
+
+# python cache
+__pycache__/
+
+# java
+*.class
+
+# vim
+.*.sw*
