@@ -8,9 +8,11 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 // import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.stereotype.Repository;
 
 import com.iasdf.studyspring.domain.Member;
 
+@Repository
 class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
