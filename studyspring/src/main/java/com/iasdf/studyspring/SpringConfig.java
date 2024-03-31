@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.iasdf.studyspring.repository.MemberRepository;
 import com.iasdf.studyspring.repository.MemoryMemberRepository;
-// import com.iasdf.studyspring.aop.TimeTraceAop;
+import com.iasdf.studyspring.aop.TimeTraceAop;
 import com.iasdf.studyspring.repository.JdbcMemberRepository;
 import com.iasdf.studyspring.repository.JdbcTemplateMemberRepository;
 import com.iasdf.studyspring.repository.JpaMemberRepository;
@@ -54,9 +54,9 @@ public class SpringConfig {
     //     return new JpaMemberRepository(em);
     // }
 
-    // @Bean
-    // public TimeTraceAop timeTraceAop() {
-    //     return new TimeTraceAop();
-    // }
+    @Bean
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
+    }
 
 }
