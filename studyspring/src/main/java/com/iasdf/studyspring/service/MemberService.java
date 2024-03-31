@@ -6,6 +6,9 @@ import java.util.Optional;
 import com.iasdf.studyspring.domain.Member;
 import com.iasdf.studyspring.repository.MemberRepository;
 
+import jakarta.transaction.Transactional;
+
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

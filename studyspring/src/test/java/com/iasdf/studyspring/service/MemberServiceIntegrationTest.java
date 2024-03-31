@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+// import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iasdf.studyspring.domain.Member;
 import com.iasdf.studyspring.repository.MemberRepository;
-import com.iasdf.studyspring.repository.JdbcMemberRepository;
+// import com.iasdf.studyspring.repository.JdbcMemberRepository;
+// import com.iasdf.studyspring.repository.JpaMemberRepository;
 
 
 @SpringBootTest
@@ -21,6 +23,7 @@ public class MemberServiceIntegrationTest {
     @Autowired MemberRepository memberRepository;
 
     @Test
+    // @Commit
     void 회원가입() {
         // given
         Member member = new Member();
