@@ -5,10 +5,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.iasdf.studyspring.repository.JdbcMemberRepository;
 import com.iasdf.studyspring.repository.MemberRepository;
 import com.iasdf.studyspring.repository.MemoryMemberRepository;
+import com.iasdf.studyspring.repository.JdbcMemberRepository;
+import com.iasdf.studyspring.repository.JdbcTemplateMemberRepository;
 import com.iasdf.studyspring.service.MemberService;
 
 @Configuration
@@ -29,6 +31,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
         // return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+        // return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
