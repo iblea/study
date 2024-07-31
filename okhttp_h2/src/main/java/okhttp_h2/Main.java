@@ -10,22 +10,22 @@ public class Main {
     public static void main(String[] args)
         throws IOException, Exception
     {
-        System.out.println("Hello, world.");
+        String homeDir = System.getenv("HOME");
         H2Client client = new H2Client();
 
         // client.requestGet("https://o49.iasdf.com/ip");
 
         // client.uploadFile("http://o49.iasdf.com/uploads",
-        //     "/home/ible/db/growcastle/background.sh");
+        //     homeDir + "/db/growcastle/background.sh");
 
         // client.uploadFile("http://o49.iasdf.com/uploads",
-        //     "/home/ible/db/growcastle/h2-2.2.224.jar");
+        //     homeDir + "/db/growcastle/h2-2.2.224.jar");
 
         // client.uploadFile("https://49.iasdf.com/uploads",
-        //     "/home/ible/db/growcastle/h2-2.2.224.jar");
+        //     homeDir + "/db/growcastle/h2-2.2.224.jar");
 
         client.uploadFile("https://49.iasdf.com/uploads",
-            "/home/ible/db/h2-2023-09-17.zip");
+            homeDir + "/db/h2-2023-09-17.zip");
 
     }
 }

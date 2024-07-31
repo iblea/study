@@ -26,21 +26,16 @@ import okhttp3.Response;
 public class H2Client {
 
     private OkHttpClient client;
-    private String sslkeylogPath;
-    private SSLSocketFactory factory = null;
 
     public H2Client()
         throws Exception
     {
-        String homeDir = System.getenv("HOME");
-        this.sslkeylogPath = homeDir + "/" + "sslkeylog.log";
         this.client = createHttpClient(5, 30000);
     }
 
     public H2Client(String sslkeylogPath)
         throws Exception
     {
-        this.sslkeylogPath = sslkeylogPath;
         this.client = createHttpClient(5, 30000);
     }
 
