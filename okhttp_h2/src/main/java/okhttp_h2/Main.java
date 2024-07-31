@@ -3,12 +3,31 @@
  */
 package okhttp_h2;
 
-public class Main {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.io.IOException;
 
-    public static void main(String[] args) {
-        System.out.println(new Main().getGreeting());
+public class Main {
+
+    public static void main(String[] args)
+        throws IOException, Exception
+    {
+        System.out.println("Hello, world.");
+        H2Client client = new H2Client();
+
+        // client.requestGet("https://o49.iasdf.com/ip");
+
+        // client.uploadFile("http://o49.iasdf.com/uploads",
+        //     "/home/ible/db/growcastle/background.sh");
+
+        // client.uploadFile("http://o49.iasdf.com/uploads",
+        //     "/home/ible/db/growcastle/h2-2.2.224.jar");
+
+        // client.uploadFile("https://49.iasdf.com/uploads",
+        //     "/home/ible/db/growcastle/h2-2.2.224.jar");
+
+        client.uploadFile("https://49.iasdf.com/uploads",
+            "/home/ible/db/h2-2023-09-17.zip");
+
     }
 }
+
+
