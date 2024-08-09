@@ -24,8 +24,19 @@ public class Main {
         // client.uploadFile("https://49.iasdf.com/uploads",
         //     homeDir + "/db/growcastle/h2-2.2.224.jar");
 
-        client.uploadFile("https://49.iasdf.com/uploads",
-            homeDir + "/db/h2-2023-09-17.zip");
+        // client.uploadFile("https://49.iasdf.com/uploads",
+        //     homeDir + "/db/h2-2023-09-17.zip");
+
+        // client.uploadFile("https://49.iasdf.com:4349/uploads",
+        //     homeDir + "/db/h2-2023-09-17.zip");
+
+        // client.requestGet("https://49.iasdf.com:4349/data.php?q=+sselectelect+");
+
+        // raongames
+        client.requestGet("https://raongames.com/growcastle/restapi/season/now/players");
+
+        // raongames
+        client.requestGet("https://raongames.com/growcastle/restapi/season/now/players/ib");
 
     }
 }

@@ -25,18 +25,36 @@ import okhttp3.Response;
 
 public class H2Client {
 
-    private OkHttpClient client;
+    private static OkHttpClient okHttpClient = null;
+    private static List<Protocol> protocols = null;
+
+
+    public static void create()
+    {
+        if (protocols == null) {
+            setProtocols();
+        }
+        if (okHttpClient == null) {
+            okHttpClient = createHttpClient(10, 30000);   // 10개의 연결, 30초 유지
+        }
+    }
+
+    public static OkHttpClient getClient() {
+        return okHttpClient;
+    }
+
+    public static List<Protocol> getProtocols() {
+        return protocols;
+    }
 
     public H2Client()
-        throws Exception
     {
-        this.client = createHttpClient(5, 30000);
+        H2Client.create();
     }
 
     public H2Client(String sslkeylogPath)
-        throws Exception
     {
-        this.client = createHttpClient(5, 30000);
+        H2Client.create();
     }
 
 
@@ -70,17 +88,18 @@ public class H2Client {
     //     return (X509TrustManager) trustManagers[0];
     // }
 
-    public List<Protocol> setProtocols() {
-        List<Protocol> protocols = new ArrayList<>();
+    private static void setProtocols() {
+        if (protocols != null) {
+            protocols = null;
+        }
+        protocols = new ArrayList<>();
         // protocols.add(Protocol.H2_PRIOR_KNOWLEDGE);
         protocols.add(Protocol.HTTP_2);
         protocols.add(Protocol.HTTP_1_1);
-        return protocols;
     }
 
 
-    public OkHttpClient createHttpClient(int maxTotalConnections, long connectionKeepAliveTimeInMillis)
-        throws Exception
+    private static OkHttpClient createHttpClient(int maxTotalConnections, long connectionKeepAliveTimeInMillis)
     {
         ConnectionPool connectionPool = new ConnectionPool(
             maxTotalConnections,
@@ -93,7 +112,7 @@ public class H2Client {
 
         return new OkHttpClient.Builder()
             .followRedirects(true)
-            .protocols(setProtocols())
+            .protocols(protocols)
             .retryOnConnectionFailure(true)
             .connectionPool(connectionPool)
             // .sslSocketFactory(sslSocketFactory, trustManager)
@@ -103,7 +122,8 @@ public class H2Client {
     public void showResponse(Request request)
         throws IOException
     {
-        Response response = this.client.newCall(request).execute();
+        OkHttpClient okClient = H2Client.getClient();
+        Response response = okClient.newCall(request).execute();
         if (response.code() < 200 || response.code() >= 300) {
             System.out.println("Request Code is not 2xx: " + response.code());
             return ;
@@ -118,6 +138,7 @@ public class H2Client {
     public void requestGet(String url)
         throws IOException
     {
+        System.out.println("URL: " + url);
         Request request = new Request.Builder()
             .url(url)
             .build();
@@ -125,6 +146,7 @@ public class H2Client {
     }
 
     public void uploadFile(String url, String filePath) throws IOException {
+        System.out.println("URL: " + url);
         File file = new File(filePath);
         System.out.println("File Path: " + file.getAbsolutePath());
         System.out.println("File Name: " + file.getName());
