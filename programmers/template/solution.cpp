@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 #include <string>
 #include <vector>
 using namespace std;
