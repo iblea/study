@@ -1,0 +1,7 @@
+# ignore googletest library
+include/
+lib/
+
+# googletest repository
+gtest/
+googletest/

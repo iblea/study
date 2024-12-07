@@ -1,7 +1,7 @@
 #!/bin/bash
 
 curpath=$(dirname $(realpath $0))
-gtest_path=$(realpath $curpath/../template/googletest)
+gtest_path=$(realpath $curpath/googletest)
 echo $gtest_path
 
 binName="gtest_output"
